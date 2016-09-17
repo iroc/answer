@@ -1,0 +1,23 @@
+{
+  "name": "answer",
+  "description": "一个基于Node+Express+MySQL开发的简易问答社区系统",
+  "main": "app.js",
+  "authors": [
+    "iroc"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/iroc/answer",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/vender/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-validation": "^1.15.0",
+    "bootstrap": "^3.3.6",
+    "underscore": "^1.8.3"
+  }
+}

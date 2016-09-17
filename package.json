@@ -1,0 +1,30 @@
+{
+  "name": "answer",
+  "version": "0.0.1",
+  "description": "一个基于Node+Express+MySQL开发的简易问答社区系统",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iroc/answer.git"
+  },
+  "author": "iroc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iroc/answer/issues"
+  },
+  "homepage": "https://github.com/iroc/answer#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
+    "babel-register": "^6.14.0",
+    "nodemon": "^1.10.2"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "xtemplate": "^4.6.0",
+    "xtpl": "^3.2.0"
+  }
+}

@@ -1,0 +1,72 @@
+{{extend ("./layout")}}
+
+{{#block ("body")}}
+<div class="aw-container-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="aw-content-wrap clearfix">
+        <div class="col-sm-12 col-md-9 aw-main-content">
+          <div class="aw-mod aw-explore-list">
+            <div class="mod-body">
+              <div class="aw-common-list">
+                <div class="aw-item active" data-topic-id="57,">
+                  <a class="aw-user-name hidden-xs" data-id="3654" href="http://wenda.golaravel.com/people/%E7%8E%8B%E5%8D%8E%E5%81%A5Ss" rel="nofollow"><img src="http://wenda.golaravel.com/static/common/avatar-max-img.png" alt="" /></a>
+                  <div class="aw-question-content">
+                    <h4>
+                      <a href="http://wenda.golaravel.com/question/2006">文章标题</a>
+                    </h4>
+                    <p>作者：
+                      <a href="/u/admin" class="aw-user-name">admin</a>
+                      <span class="text-color-999">• 0 个回复 • 5分钟前
+        </span>
+                    </p>
+                  </div>
+                </div>
+                <div class="aw-item active" data-topic-id="57,">
+                  <a class="aw-user-name hidden-xs" data-id="3654" href="http://wenda.golaravel.com/people/%E7%8E%8B%E5%8D%8E%E5%81%A5Ss" rel="nofollow"><img src="http://wenda.golaravel.com/static/common/avatar-max-img.png" alt="" /></a>
+                  <div class="aw-question-content">
+                    <h4>
+                      <a href="http://wenda.golaravel.com/question/2006">文章标题</a>
+                    </h4>
+                    <p>作者：
+                      <a href="/u/admin" class="aw-user-name">admin</a>
+                      <span class="text-color-999">• 0 个回复 • 5分钟前
+        </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mod-footer">
+              <div class="page-control">
+                <ul id="pagination-demo" class="pagination pull-right">
+                  <li class="active"><a href="javascript:;">1</a></li>
+                  <li>
+                    <a href="http://wenda.golaravel.com/sort_type-new__day-0__is_recommend-0__page-2">2</a>
+                  </li>
+                  <li>
+                    <a href="http://wenda.golaravel.com/sort_type-new__day-0__is_recommend-0__page-3">3</a>
+                  </li>
+                  <li>
+                    <a href="http://wenda.golaravel.com/sort_type-new__day-0__is_recommend-0__page-4">4</a>
+                  </li>
+                  <li>
+                    <a href="http://wenda.golaravel.com/sort_type-new__day-0__is_recommend-0__page-2">
+                      &gt;</a></li>
+                  <li>
+                    <a href="http://wenda.golaravel.com/sort_type-new__day-0__is_recommend-0__page-42">
+                      &gt;&gt;</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/block}} 
+
+{{#block ("foot")}}
+
+{{/block}}

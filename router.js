@@ -1,17 +1,16 @@
 import express from 'express'
+import * as indexController from './controllers/index'
+import * as userController from './controllers/user'
+import * as articleController from './controllers/article'
+import * as commentController from './controllers/comment'
 
 const router = express.Router()
 
 router
-  .get('/', (req, res) => {
-    res.render('index')
-  })
-  .get('/login', (req, res) => {
-    res.render('login')
-  })
-  .get('/register', (req, res) => {
-    res.render('register')
-  })
+  .get('/', indexController.showIndex)
+  .get('/login', userController.showLogin)
+  .get('/register',userController.showRegister)
+  .post('/register', userController.doRegister)
   .get('/logout', (req, res) => {
     res.render('logout')
   })

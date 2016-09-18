@@ -1,2 +1,4 @@
 node_modules
 www/vender
+npm-debug.*
+demo

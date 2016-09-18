@@ -51,5 +51,39 @@
 {{/block}} 
 
 {{#block ("foot")}}
-
+<script>
+  // 注册成功：1000
+  // 用户名被占用：1001
+  // 注册失败：1002
+  // 操作异常：1003
+  $('#register_form').on('submit', function (e) {
+    e.preventDefault()
+    var url = $(this).attr('action')
+    var type = $(this).attr('method')
+    $.ajax({
+      url: url,
+      type: type,
+      data: $(this).serialize(),
+      dataType: 'json',
+      success: function (data) {
+        console.log(data)
+        var code = data.code
+        switch (code) {
+          case 1000:
+            window.location.href = '/'
+            break;
+          case 1001:
+            alert('用户名被占用')
+            break
+          case 1002:
+            alert('注册失败，请稍后重试')
+            break
+          default:
+            alert('状态码异常')
+            break;
+        }
+      }
+    })
+  })
+</script>
 {{/block}}

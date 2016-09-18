@@ -6,7 +6,7 @@ export default {
   database: 'answer',
   viewPath: join(__dirname, 'views'),
   statciPaths: [
-    join(__dirname, 'www'),
-    join(__dirname, 'assets')
-  ]
+    join(__dirname, 'www')
+  ],
+  secret: 'itcastanswer'
 }

@@ -1,8 +1,5 @@
-{{extend ("./layout")}} 
-{{#block ("head")}}
-<link href="/www/css/login.css" rel="stylesheet" type="text/css" /> 
-{{/block}} 
-{{#block ("body")}}
+{{extend ("./layout")}} {{#block ("head")}}
+<link href="/www/css/login.css" rel="stylesheet" type="text/css" /> {{/block}} {{#block ("body")}}
 <div id="wrapper">
   <div class="aw-login-box">
     <div class="mod-body clearfix">
@@ -43,7 +40,44 @@
     </div>
   </div>
 </div>
-{{/block}} 
-{{#block ("foot")}}
-
+{{/block}} {{#block ("foot")}}
+<script>
+// 2000 登录成功
+// 2001 表示用户不存在
+// 2002 表示密码不正确
+// 2003 表示操作失败
+$(function() {
+  $('#login_form').on('submit', function(e) {
+    e.preventDefault()
+    var method = $(this).attr('method')
+    var action = $(this).attr('action')
+    $.ajax({
+      url: action,
+      type: method,
+      data: $(this).serialize(),
+      dataType: 'json',
+      success: function(data) {
+        var code = data.code
+        switch (code) {
+          case 2000:
+            window.location.href = '/'
+            break;
+          case 2001:
+            alert('用户不存在')
+            break
+          case 2002:
+            alert('密码不正确')
+            break
+          case 2003:
+            alert('服务器忙，请重试')
+            break
+          default:
+            
+            break;
+        }
+      }
+    })
+  })
+})
+</script>
 {{/block}}

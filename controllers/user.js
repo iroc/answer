@@ -16,7 +16,38 @@ export function showRegister(req, res) {
 }
 
 export function doLogin(req, res) {
-
+  let username = req.body.username
+  let password = req.body.password
+  // 后台拿到用户请求提交的数据之后，也一定要做校验判断
+  // 为什么呢？因为用户可以禁用 JavaScript
+  User.getByUsername(username)
+    .then(u => {
+      if (!u) {
+        return res.json({
+          code: 2001,
+          msg: 'username not exists'
+        })
+      }
+      if (password !== u.password) {
+        return res.json({
+          code: 2002,
+          msg: 'password error'
+        })
+      }
+      // 代码执行到这里，说明用户可以通过验证了
+      // 用户登陆成功，记录登陆状态，记录到 Session 中
+      req.session.user = u
+      res.json({
+        code: 2000,
+        msg: 'success'
+      })
+    })
+    .catch(err => {
+      res.json({
+        code: 2003,
+        msg: err.message
+      })
+    })
 }
 
 export function doRegister(req, res) {
@@ -29,7 +60,7 @@ export function doRegister(req, res) {
     // 如果不存在，保存数据库
   User.getByUsername(username)
     .then(u => {
-      if (u.length !== 0) {
+      if (u) {
         return res.json({
           code: 1001,
           msg: 'username already exists'
@@ -47,6 +78,7 @@ export function doRegister(req, res) {
       // 用户注册成功，记录用户登陆状态
       user.id = rows.insertId
       req.session.user = user
+
       res.json({
         code: 1000,
         msg: 'success'

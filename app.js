@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(session({
   secret: config.secret,
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
 }))
 
 // 挂载路由

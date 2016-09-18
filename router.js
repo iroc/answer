@@ -9,6 +9,7 @@ const router = express.Router()
 router
   .get('/', indexController.showIndex)
   .get('/login', userController.showLogin)
+  .post('/login', userController.doLogin)
   .get('/register',userController.showRegister)
   .post('/register', userController.doRegister)
   .get('/logout', (req, res) => {

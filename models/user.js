@@ -12,13 +12,14 @@ export default class User {
 
   save(callback) {
     return new Promise((resolve, reject) => {
-      db.query('INSERT INTO `users`(`username`, `password`, `email`, `avatar`, `gender`) VALUES(?, ?, ?, ?, ?);', [
-          this.username,
-          this.password,
-          this.email,
-          this.avatar,
-          this.gender
-        ])
+      db.query(
+          'INSERT INTO `users`(`username`, `password`, `email`, `avatar`, `gender`) VALUES(?, ?, ?, ?, ?);', [
+            this.username,
+            this.password,
+            this.email,
+            this.avatar,
+            this.gender
+          ])
         .then(rows => {
           resolve(rows)
         })
@@ -32,7 +33,8 @@ export default class User {
     return new Promise((resolve, reject) => {
       db.query('SELECT * FROM `users` WHERE `username`=?', [username])
         .then(rows => {
-          resolve(rows)
+          console.log(rows)
+          resolve(rows[0])
         })
         .catch(err => {
           reject(err)

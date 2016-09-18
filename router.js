@@ -16,9 +16,11 @@ router
   .get('/publish/article', articleController.showPublish)
   .post('/publish/article', articleController.doPublish)
   .get('/article/:aid', articleController.showArticle)
+  .get('/getbypage/:pageSize/:pageNum', articleController.getByPage)
+  .get('/getTotalPages/:pageSize', articleController.getTotalPageByPageSize)
   .get('/setting', (req, res) => {
     res.render('setting')
   })
-
+  .get('/captcha', userController.getCaptcha)
 
 export default router

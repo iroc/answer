@@ -24,11 +24,13 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "ccap": "^0.6.10",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "marked": "^0.3.6",
     "moment": "^2.15.0",
     "mysql": "^2.11.1",
+    "underscore": "^1.8.3",
     "utility": "^1.8.0",
     "xtemplate": "^4.6.0",
     "xtpl": "^3.2.0"

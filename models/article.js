@@ -46,4 +46,40 @@ export default class Article {
         })
     })
   }
+
+  static getByPage(pageSize, pageNum) {
+    return new Promise((resolve, reject) => {
+      db.query(`
+select a.id as aid, a.title, a.content, a.time, u.id as uid, u.username from articles as a
+INNER JOIN users as u
+ON a.uid=u.id
+ORDER BY a.time DESC
+LIMIT ?,?
+        `, [
+          (pageNum - 1) * pageSize, pageSize
+        ])
+        .then(rows => {
+          resolve(rows)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  }
+
+  static getTotalCount() {
+    return new Promise((resolve, reject) => {
+      db.query(`
+SELECT COUNT(*) as count FROM articles as a
+INNER JOIN users as u
+ON a.uid=u.id
+        `)
+        .then(rows => {
+          resolve(rows)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  }
 }

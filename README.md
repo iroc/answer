@@ -57,6 +57,22 @@ POST   /setting     处理设置用户信息请求
 
 ## 用户登陆
 
+### 验证码
+
+- 安装一个包 `ccap`
+  + visual studio 2015
+  + Python 环境 2.7.x
+  + `npm install -g node-gyp`
+  + `npm install --save ccap`
+
+- 前端注意事项：
+  + 点击图片，重新发起请求，记得在后面加一个时间戳或者随机数，防止浏览器缓存不发请求
+
+验证码原理：
+  
+  后台生成图片验证码，然后发给客户端，同时会把验证码保存在 Session 中，
+  用户注册的时候会把输入的验证码提交到后台，然后通过 Session 取到验证码 和用户提交上来的验证码做比对即可。
+
 ## Cookie
 
 [维基百科 - Cookie](https://zh.wikipedia.org/wiki/Cookie)
@@ -151,3 +167,9 @@ Session 一般用于安全性较高的功能：
 - 验证码
 
 Session也分为会话Session和持久化Session。
+
+## 制作 GitBook 电子书
+
+第一，全局安装：`npm install -g gitbook-cli`
+
+第二，新建一个目录。

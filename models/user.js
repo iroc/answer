@@ -10,7 +10,7 @@ export default class User {
     this.gender = gender
   }
 
-  save(callback) {
+  save() {
     return new Promise((resolve, reject) => {
       db.query(
           'INSERT INTO `users`(`username`, `password`, `email`, `avatar`, `gender`) VALUES(?, ?, ?, ?, ?);', [

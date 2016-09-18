@@ -1,16 +1,11 @@
-{{extend ("./layout")}}
-
-{{#block ("head")}}
-<link rel="stylesheet" href="/www/vender/editor/editor.css">
-{{/block}}
-{{#block ("body")}}
+{{extend ("./layout")}} {{#block ("head")}}
+<link rel="stylesheet" href="/www/vender/editor/editor.css"> {{/block}} {{#block ("body")}}
 <div class="aw-container-wrap">
   <div class="container aw-publish aw-publish-article">
     <div class="row">
       <div class="aw-content-wrap clearfix">
         <div class="col-sm-12 col-md-9 aw-main-content">
           <!-- tab 切换 -->
-
           <!-- end tab 切换 -->
           <form action="/publish/article" method="post" id="article_form">
             <div class="aw-mod aw-mod-publish">
@@ -18,25 +13,21 @@
                 <h3>文章标题:</h3>
                 <!-- 文章标题 -->
                 <div class="aw-publish-title active">
-                  <input type="text" name="title" id="title" class="form-control"/>
+                  <input type="text" name="title" id="title" class="form-control" />
                 </div>
                 <!-- end 文章标题 -->
-
                 <h3>文章内容:</h3>
                 <div class="aw-mod aw-editor-box">
                   <div class="mod-head">
                     <div class="wmd-panel">
                       <div id="wmd-button-bar"></div>
-                      <textarea class="wmd-input form-control autosize" id="wmd-input" rows="15"
-                                name="content"></textarea>
+                      <textarea class="wmd-input form-control autosize" id="wmd-input" rows="15" name="content"></textarea>
                     </div>
                   </div>
                   <div class="mod-body">
                     <p class="text-color-999"><span class="pull-right" id="question_detail_message">&nbsp;</span>
                     </p>
-
                   </div>
-
                 </div>
               </div>
               <div class="mod-footer clearfix">
@@ -65,14 +56,11 @@
     </div>
   </div>
 </div>
-
-
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="exampleModalLabel">上传图片</h4>
       </div>
       <div class="modal-body">
@@ -90,14 +78,11 @@
     </div>
   </div>
 </div>
-
-
-{{/block}}
-
-{{#block ("foot")}}
+{{/block}} {{#block ("foot")}}
 <script src="/www/vender/editor/editor.js"></script>
 <script src="/www/vender/editor/marked.js"></script>
 <script>
+$(function() {
   var editor = new Editor({
     element: document.querySelector('#wmd-input')
   });
@@ -107,5 +92,41 @@
   //  var content = editor.codemirror.getValue();
   //  editor.codemirror.setValue(content);
 
+  // 3000 表示成功
+  // 3001 表示失败
+  $('#article_form').on('submit', function(e) {
+    e.preventDefault()
+    var action = $(this).attr('action')
+    var method = $(this).attr('method')
+    $.ajax({
+      url: action,
+      type: method,
+      data: {
+        title: $('#title').val().trim(),
+        content: editor.codemirror.getValue().trim()
+      },
+      dataType: 'json',
+      success: function(data) {
+        var code = data.code
+        switch (code) {
+          case 3000:
+            // /article/id
+            window.location.href = '/article/' + data.id
+            break;
+          case 3001:
+            alert('发表失败')
+            break;
+          case 3002:
+            alert(data.message)
+            break;
+          default:
+
+            break;
+        }
+      }
+    })
+  })
+
+})
 </script>
 {{/block}}

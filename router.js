@@ -10,17 +10,12 @@ router
   .get('/', indexController.showIndex)
   .get('/login', userController.showLogin)
   .post('/login', userController.doLogin)
-  .get('/register',userController.showRegister)
+  .get('/register', userController.showRegister)
   .post('/register', userController.doRegister)
-  .get('/logout', (req, res) => {
-    res.render('logout')
-  })
-  .get('/publish/article', (req, res) => {
-    res.render('publish')
-  })
-  .get('/article', (req, res) => {
-    res.render('article')
-  })
+  .get('/logout', userController.logout)
+  .get('/publish/article', articleController.showPublish)
+  .post('/publish/article', articleController.doPublish)
+  .get('/article/:aid', articleController.showArticle)
   .get('/setting', (req, res) => {
     res.render('setting')
   })

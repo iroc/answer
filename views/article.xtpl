@@ -15,13 +15,11 @@
           </div>
           <div class="aw-mod aw-question-detail">
             <div class="mod-head">
-              <h1>文章标题 - 文章标题</h1>
+              <h1>{{ article.title }}</h1>
             </div>
             <div class="mod-body">
               <div class="content markitup-box">
-                文章内容。。。。。。。
-                。。。
-                。。。
+                {{{ article.content }}}
               </div>
               <div class="meta clearfix">
                 <div class="aw-article-vote pull-left disabled">

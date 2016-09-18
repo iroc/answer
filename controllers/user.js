@@ -2,12 +2,18 @@ import User from '../models/user'
 import {md5} from 'utility'
 import config from '../config'
 
+/**
+ * GET /login
+ */
 export function showLogin(req, res) {
   res.render('login', {
     title: '用户登陆'
   })
 }
 
+/**
+ * GET /register
+ */
 export function showRegister(req, res) {
   if (req.session.user) {
     return res.redirect('back')
@@ -17,6 +23,9 @@ export function showRegister(req, res) {
   })
 }
 
+/**
+ * POST /login
+ */
 export function doLogin(req, res) {
   let username = req.body.username
   let password = req.body.password
@@ -53,6 +62,9 @@ export function doLogin(req, res) {
     })
 }
 
+/**
+ * POST /register
+ */
 export function doRegister(req, res) {
   let username = req.body.username
   let password = md5(`${req.body.password}${config.secret}`)
@@ -93,4 +105,13 @@ export function doRegister(req, res) {
         msg: err.message
       })
     })
+}
+
+/**
+ * GET /logout
+ */
+export function logout(req, res) {
+  // 用户退出，将session中的user设置为null，即可清除登陆状态
+  req.session.user = null
+  res.render('logout')
 }

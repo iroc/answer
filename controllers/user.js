@@ -1,4 +1,6 @@
 import User from '../models/user'
+import {md5} from 'utility'
+import config from '../config'
 
 export function showLogin(req, res) {
   res.render('login', {
@@ -28,7 +30,8 @@ export function doLogin(req, res) {
           msg: 'username not exists'
         })
       }
-      if (password !== u.password) {
+      console.log(md5(`${password}${config.secret}`))
+      if (md5(`${password}${config.secret}`) !== u.password) {
         return res.json({
           code: 2002,
           msg: 'password error'
@@ -52,7 +55,7 @@ export function doLogin(req, res) {
 
 export function doRegister(req, res) {
   let username = req.body.username
-  let password = req.body.password
+  let password = md5(`${req.body.password}${config.secret}`)
   let email = req.body.email
   let user = new User(username, password, email)
     // 判断用户名是否被占用

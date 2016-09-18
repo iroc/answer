@@ -27,6 +27,7 @@
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "mysql": "^2.11.1",
+    "utility": "^1.8.0",
     "xtemplate": "^4.6.0",
     "xtpl": "^3.2.0"
   }
